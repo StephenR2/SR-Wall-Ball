@@ -1,5 +1,5 @@
 ﻿/* Stephen Randall
- * 03/16/18
+ * 06/01/18
  * This script is responsible for position of paddle, speed of paddle, etc.
  */
 using System.Collections;
@@ -37,10 +37,11 @@ public class Player: MonoBehaviour {
 			return;
 		}
 
+
 		Touch touch = Input.touches [0];
 		Vector3 pos = touch.position;
 
-		if (touch.phase == TouchPhase.Began) {
+		if (touch.phase == TouchPhase.Began) { // All of this detects drags and slides of finger, updates paddle position to follow your finger.
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay (pos); 
 			if (Physics.Raycast (ray, out hit) && (hit.collider.tag == "Player")) {
